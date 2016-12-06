@@ -1,0 +1,78 @@
+{
+  "image": "",
+  "state": {
+    "pan": {
+      "x": -30.639139475841905,
+      "y": -21.469607225256397
+    },
+    "zoom": 1.082894206047058
+  },
+  "graph": {
+    "blocks": [
+      {
+        "id": "8098611c-51b7-41f8-9795-5ab7cbcbe02c",
+        "type": "basic.input",
+        "data": {
+          "label": "T"
+        },
+        "position": {
+          "x": 240,
+          "y": 160
+        }
+      },
+      {
+        "id": "e49bba8f-cdc5-4180-8866-6f643160ca3f",
+        "type": "basic.output",
+        "data": {
+          "label": "Q"
+        },
+        "position": {
+          "x": 992,
+          "y": 160
+        }
+      },
+      {
+        "id": "efd015fa-db64-41f0-b907-f9e809e83952",
+        "type": "basic.code",
+        "data": {
+          "code": "//-- Basic T flip-flop\n\n//-- Initial state\nreg _q = 1;\n\n//-- Toggle!\nalways @(posedge T) \n  _q <= ~_q;\n  \n//-- Assign the state to the output\nassign Q = _q;",
+          "ports": {
+            "in": [
+              "T"
+            ],
+            "out": [
+              "Q"
+            ]
+          }
+        },
+        "position": {
+          "x": 464,
+          "y": 64
+        }
+      }
+    ],
+    "wires": [
+      {
+        "source": {
+          "block": "efd015fa-db64-41f0-b907-f9e809e83952",
+          "port": "Q"
+        },
+        "target": {
+          "block": "e49bba8f-cdc5-4180-8866-6f643160ca3f",
+          "port": "in"
+        }
+      },
+      {
+        "source": {
+          "block": "8098611c-51b7-41f8-9795-5ab7cbcbe02c",
+          "port": "out"
+        },
+        "target": {
+          "block": "efd015fa-db64-41f0-b907-f9e809e83952",
+          "port": "T"
+        }
+      }
+    ]
+  },
+  "deps": {}
+}
